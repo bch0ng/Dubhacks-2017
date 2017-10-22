@@ -25,27 +25,22 @@
     <a href="/login"><li id="login">Log in</li></a>
     <a href="/signup"><li id="signup">Sign up</li></a>
   </ul>
-  <h1>Protest Names</h1>
-  <h3>Description of protest</h3>
-  <h3>My Google Maps Demo</h3>
-  <div id="map"></div>
-  <script>
-    function initMap() {
-      var startpos = {lat: 14.05, lng: 0};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: startpos
-      });
-      var marker = new google.maps.Marker({
-        position: startpos,
-        map: map
-      });
-    }
+  <h1> <%= header %> </h1>
+  <h3> <%= description %> </h3>
+  <script asyc defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB1Kq4p_9yKm5PFdCxCEasII-5LORxhbA&callback=initMap">
   </script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDr7VV8wXraC_fG59r7keeu62FaO1KC9Y&callback=initMap">
-  </script>
-  <div id="feed"><a class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/DubHacks?ref_src=twsrc%5Etfw">Tweets by DubHacks</a> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+  <div id="map">
+    <iframe
+      width="500"
+      height="500"
+      frameborder="0" 
+      style="border:0"
+      src="https://www.google.com/maps/embed/v1/Directions?key=AIzaSyAB1Kq4p_9yKm5PFdCxCEasII-5LORxhbA&origin=place_id:<%= origin %>&destination=place_id:<%= destination %>&mode=walking"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div id="feed"><a class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/<%= twitterHandle %>?ref_src=twsrc%5Etfw">Tweets by DubHacks</a> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
   <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>
