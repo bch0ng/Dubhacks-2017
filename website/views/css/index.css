@@ -3,6 +3,10 @@ body {
   background-color: #E6F2EF !important;
 }
 
+.hidden {
+  z-index: -100;
+}
+
 #navbar {
   background-color: black;
   display: inline-block;
