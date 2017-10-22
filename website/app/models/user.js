@@ -2,13 +2,25 @@
 // load the things we need
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
+var Schema = mongoose.Schema;
+
+var protestSchema = Schema({
+        title           : String,
+        description     : String,
+        path            : {
+            origin      : String,
+            destination : String
+        },
+        twitter         : String
+});
 
 // define the schema for our user model
-var userSchema = mongoose.Schema({
+var userSchema = Schema({
 
     local            : {
         username     : String,
-        password     : String
+        password     : String,
+        protest      : [protestSchema]
     },
     facebook         : {
         id           : String,

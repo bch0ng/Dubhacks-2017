@@ -113,4 +113,40 @@ module.exports = function(passport) {
 
     }));
 
+
+    passport.use('local-newitem', new LocalStrategy({
+        titleField : 'title',
+        descriptionField : 'description',
+        originField : 'origin',
+        destinationField : 'destination',
+        twitterField : 'twitter',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, username, password, done) {
+
+        // asynchronous
+        // User.findOne wont fire unless data is sent back
+        process.nextTick(function() {
+
+        // find a user whose username is the same as the forms username
+        // we are checking to see if the user trying to login already exists
+
+                var protest            = new Protest();
+
+                // set the user's local credentials
+                newUser.local.username    = username;
+                newUser.local.password = newUser.generateHash(password);
+
+                // save the user
+                newUser.save(function(err) {
+                    if (err)
+                        throw err;
+                    return done(null, newUser);
+                });
+
+        });   
+    }));
+
+
+
 };

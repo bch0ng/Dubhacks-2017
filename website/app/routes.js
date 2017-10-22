@@ -72,6 +72,17 @@ module.exports = function(app, passport) {
         });
     });
 
+    app.get('/newitem', isLoggedIn, function(req, res) {
+        res.render('newitem.ejs', {
+            user : req.user, // get the user out of session and pass to template
+        });
+    });
+    app.post('/newitem', passport.authenticate('local-newitem', {
+        successRedirect : '/newitem', // redirect to the secure profile section
+        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+
     // =====================================
     // LOGOUT ==============================
     // =====================================
