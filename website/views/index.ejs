@@ -6,37 +6,29 @@
   <title>unREST</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="views/css/index.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
-  <style>
-     #map {
-      height: 400px;
-      width: 100%;
-     }
-  </style>
 </head>
 
 <body>
   <ul id="navbar">
-    <li>Home</li>
-    <li>Page 2</li>
-    <li>Page 3</li>
+    <a href="/"><li>Home</li></a>
     <a href="/login"><li id="login">Log in</li></a>
     <a href="/signup"><li id="signup">Sign up</li></a>
   </ul>
-  <h1> <%= header %> </h1>
-  <h3> <%= description %> </h3>
-  <script asyc defer
+  <div id="header">
+    <h1> <%= header %> </h1>
+    <h4> <%= description %> </h4>
+  </div>
+  <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB1Kq4p_9yKm5PFdCxCEasII-5LORxhbA&callback=initMap">
   </script>
   <div id="map">
     <iframe
-      width="500"
-      height="500"
       frameborder="0" 
       style="border:0"
-      src="https://www.google.com/maps/embed/v1/Directions?key=AIzaSyAB1Kq4p_9yKm5PFdCxCEasII-5LORxhbA&origin=place_id:<%= origin %>&destination=place_id:<%= destination %>&mode=walking"
+      src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAB1Kq4p_9yKm5PFdCxCEasII-5LORxhbA&origin=place_id:<%= origin %>&destination=place_id:<%= destination %>&mode=walking"
       allowfullscreen>
     </iframe>
   </div>
